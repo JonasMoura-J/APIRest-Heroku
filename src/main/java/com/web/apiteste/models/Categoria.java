@@ -1,11 +1,14 @@
 package com.web.apiteste.models;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,8 @@ public class Categoria implements Serializable{
 	
 	private String nome;
 	
+	@ManyToMany(mappedBy = "categoria")
+	private Set<Produto> produtos = new HashSet<Produto>();
 	
 	public Categoria() {
 		

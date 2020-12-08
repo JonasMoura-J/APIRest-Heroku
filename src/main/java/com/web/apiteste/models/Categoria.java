@@ -29,11 +29,12 @@ public class Categoria implements Serializable{
 	public Categoria() {
 		
 	}
-
-	public Categoria(long id, String nome) {
+	
+	public Categoria(long id, String nome, Set<Produto> produtos) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.produtos = produtos;
 	}
 
 	public long getId() {
@@ -50,6 +51,14 @@ public class Categoria implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public Set<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(Set<Produto> produtos) {
+		this.produtos = produtos;
 	}
 
 	@Override

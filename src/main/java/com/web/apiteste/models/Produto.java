@@ -2,6 +2,7 @@ package com.web.apiteste.models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,6 +31,8 @@ public class Produto implements Serializable{
 	
 	private BigDecimal valor;
 	
+	private LocalDate fabricação;
+	
 	@ManyToMany
 	@JoinTable(name = "tb_produto_categoria",
 			joinColumns = @JoinColumn(name = "produto_id", referencedColumnName =  "id"),
@@ -37,6 +40,20 @@ public class Produto implements Serializable{
 	)
 	private Set<Categoria> categoria = new HashSet<Categoria>();
 	
+	public Produto() {
+		
+	}
+	
+	public Produto(long id, String nome, BigDecimal quantidade, BigDecimal valor, LocalDate fabricação,
+			Set<Categoria> categoria) {
+		this.id = id;
+		this.nome = nome;
+		this.quantidade = quantidade;
+		this.valor = valor;
+		this.fabricação = fabricação;
+		this.categoria = categoria;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -68,6 +85,21 @@ public class Produto implements Serializable{
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	
+
+	public LocalDate getFabricação() {
+		return fabricação;
+	}
+
+	public void setFabricação(LocalDate fabricação) {
+		this.fabricação = fabricação;
+	}
+
+	public Set<Categoria> getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Set<Categoria> categoria) {
+		this.categoria = categoria;
+	}
 	
 }
